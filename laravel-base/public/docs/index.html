@@ -1,0 +1,957 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.</p>
+<!-- END_INFO -->
+<h1>Backyard management</h1>
+<p>Methods for managing Backyards</p>
+<!-- START_7bf2c687f0df9c5aaf2404ee117505cf -->
+<h2>Display a listing of the backyards with the associated user.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/backyards" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/backyards");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        "id": 2,
+        "created_at": "2019-11-05 00:53:25",
+        "updated_at": "2019-11-05 15:55:47",
+        "name": "aveiro",
+        "description": "pequeno jardim",
+        "image": "backyardImages\/CPFAubp7sphpZlyQAk65gBfDONqdZEDc1ehn82yo.jpeg",
+        "user_id": 1,
+        "user": {
+            "id": 1,
+            "name": "Administrator",
+            "email": "admin@tdi.pt",
+            "email_verified_at": null,
+            "role_id": 1,
+            "created_at": "2019-11-05 00:53:15",
+            "updated_at": "2019-11-05 00:53:15",
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 3,
+        "created_at": "2019-11-05 00:53:38",
+        "updated_at": "2019-11-05 00:53:38",
+        "name": "trofa",
+        "description": "medio jardim",
+        "image": null,
+        "user_id": 1,
+        "user": {
+            "id": 1,
+            "name": "Administrator",
+            "email": "admin@tdi.pt",
+            "email_verified_at": null,
+            "role_id": 1,
+            "created_at": "2019-11-05 00:53:15",
+            "updated_at": "2019-11-05 00:53:15",
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 11,
+        "created_at": "2019-11-05 14:49:57",
+        "updated_at": "2019-11-05 15:47:15",
+        "name": "manuel",
+        "description": "jardim piqueno",
+        "image": "backyardImages\/8IJCU9iIKQ07Ui5363GIn60L3rD9AdXlsfYePUkx.jpeg",
+        "user_id": 1,
+        "user": {
+            "id": 1,
+            "name": "Administrator",
+            "email": "admin@tdi.pt",
+            "email_verified_at": null,
+            "role_id": 1,
+            "created_at": "2019-11-05 00:53:15",
+            "updated_at": "2019-11-05 00:53:15",
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 14,
+        "created_at": "2019-11-05 17:02:05",
+        "updated_at": "2019-11-05 17:02:05",
+        "name": "yo",
+        "description": "lindo",
+        "image": "backyardImages\/97P0dmFb33hMzYJQ12veDPtoqqF9kJWW6IyCpvTn.jpeg",
+        "user_id": 1,
+        "user": {
+            "id": 1,
+            "name": "Administrator",
+            "email": "admin@tdi.pt",
+            "email_verified_at": null,
+            "role_id": 1,
+            "created_at": "2019-11-05 00:53:15",
+            "updated_at": "2019-11-05 00:53:15",
+            "deleted_at": null
+        }
+    },
+    {
+        "id": 15,
+        "created_at": "2019-11-05 21:26:22",
+        "updated_at": "2019-11-05 21:26:22",
+        "name": "yolo",
+        "description": "lindo",
+        "image": null,
+        "user_id": 1,
+        "user": {
+            "id": 1,
+            "name": "Administrator",
+            "email": "admin@tdi.pt",
+            "email_verified_at": null,
+            "role_id": 1,
+            "created_at": "2019-11-05 00:53:15",
+            "updated_at": "2019-11-05 00:53:15",
+            "deleted_at": null
+        }
+    }
+]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/backyards</code></p>
+<!-- END_7bf2c687f0df9c5aaf2404ee117505cf -->
+<!-- START_a9b64ed96e16bec854d7fac2e6a20d6f -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/backyards" \
+    -H "Content-Type: application/json" \
+    -d '{"name":"quae","description":"cum","image":"tempore","user_id":19}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/backyards");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "name": "quae",
+    "description": "cum",
+    "image": "tempore",
+    "user_id": 19
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/backyards</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>required</td>
+<td>The name of the backyard</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>optional</td>
+<td>A description for the backyard</td>
+</tr>
+<tr>
+<td>image</td>
+<td>image</td>
+<td>optional</td>
+<td>An image for the backyard</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>The id of the user associated with the backyard</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a9b64ed96e16bec854d7fac2e6a20d6f -->
+<!-- START_6bfa3dd2b21ca77437bc4c15d92a6108 -->
+<h2>Display the specific backyard.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/backyards/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":7}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/backyards/1");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 7
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\Backyard] 1"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/backyards/{backyard}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>The id of the backyard</td>
+</tr>
+</tbody>
+</table>
+<!-- END_6bfa3dd2b21ca77437bc4c15d92a6108 -->
+<!-- START_6db5590bdd02e1e9726c6f46ff007dcc -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/backyards/1" \
+    -H "Content-Type: application/json" \
+    -d '{"name":"mollitia","description":"similique","image":"quia","user_id":2}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/backyards/1");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "name": "mollitia",
+    "description": "similique",
+    "image": "quia",
+    "user_id": 2
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/backyards/{backyard}</code></p>
+<p><code>PATCH api/backyards/{backyard}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>optional</td>
+<td>The name of the backyard</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>optional</td>
+<td>A description for the backyard</td>
+</tr>
+<tr>
+<td>image</td>
+<td>image</td>
+<td>optional</td>
+<td>An image for the backyard</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>integer</td>
+<td>optional</td>
+<td>The id of the user associated with the backyard</td>
+</tr>
+</tbody>
+</table>
+<!-- END_6db5590bdd02e1e9726c6f46ff007dcc -->
+<!-- START_5c47fc2f166053882eb6ae44f2da5f99 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/backyards/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":9}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/backyards/1");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 9
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/backyards/{backyard}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>The id of the backyard to be removed</td>
+</tr>
+</tbody>
+</table>
+<!-- END_5c47fc2f166053882eb6ae44f2da5f99 -->
+<h1>PlantLib management</h1>
+<p>Methods for managing Plants Library</p>
+<!-- START_6e45b7ea7ff9f9c3facd48be0035d22c -->
+<h2>Display a listing of the resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/plantlib" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plantlib");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/plantlib</code></p>
+<!-- END_6e45b7ea7ff9f9c3facd48be0035d22c -->
+<!-- START_1bf2cbbb7bbf80fe382a9aac2ecf1233 -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/plantlib" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plantlib");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/plantlib</code></p>
+<!-- END_1bf2cbbb7bbf80fe382a9aac2ecf1233 -->
+<!-- START_f7409976dfbe0314c3d3ed51235a2104 -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/plantlib/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plantlib/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\PlantLib] 1"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/plantlib/{plantlib}</code></p>
+<!-- END_f7409976dfbe0314c3d3ed51235a2104 -->
+<!-- START_d613407990e8ae8d2684f7287832c2a6 -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/plantlib/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plantlib/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/plantlib/{plantlib}</code></p>
+<p><code>PATCH api/plantlib/{plantlib}</code></p>
+<!-- END_d613407990e8ae8d2684f7287832c2a6 -->
+<!-- START_4c609369e7702c530ac6ac96bc4075b9 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/plantlib/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plantlib/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/plantlib/{plantlib}</code></p>
+<!-- END_4c609369e7702c530ac6ac96bc4075b9 -->
+<h1>Plant management</h1>
+<p>Methods for managing Plants</p>
+<!-- START_b3c1e119b06f23f4d7015da9496a8782 -->
+<h2>Display a listing of the resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/plants" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plants");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/plants</code></p>
+<!-- END_b3c1e119b06f23f4d7015da9496a8782 -->
+<!-- START_0e4b761a05616d97d389d39f5e7b935f -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/plants" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plants");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/plants</code></p>
+<!-- END_0e4b761a05616d97d389d39f5e7b935f -->
+<!-- START_0d78cbc94b2deb802a86fd3f7b3c655a -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/plants/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plants/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\Plant] 1"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/plants/{plant}</code></p>
+<!-- END_0d78cbc94b2deb802a86fd3f7b3c655a -->
+<!-- START_0a075d1a9aab2fc6ebe118ade4e862fa -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/plants/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plants/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/plants/{plant}</code></p>
+<p><code>PATCH api/plants/{plant}</code></p>
+<!-- END_0a075d1a9aab2fc6ebe118ade4e862fa -->
+<!-- START_312a63e3a7452952399f53b01949e6c1 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/plants/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/plants/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/plants/{plant}</code></p>
+<!-- END_312a63e3a7452952399f53b01949e6c1 -->
+<h1>TreeLib management</h1>
+<p>Methods for managing Trees Library</p>
+<!-- START_45e240e759ee38283bdb82cf3a015654 -->
+<h2>Display a listing of the resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/treelib" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/treelib");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        "id": 1,
+        "created_at": "2019-11-05 21:00:39",
+        "updated_at": "2019-11-05 21:00:39",
+        "image": "TreeLibImages\/lsR7hqwQbMDZSLNxqJhpA5rSihDrpueN5c7L1VMu.jpeg",
+        "tree_id": 1
+    }
+]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/treelib</code></p>
+<!-- END_45e240e759ee38283bdb82cf3a015654 -->
+<!-- START_bc3638a351ddab1c75ead2b811f05c72 -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/treelib" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/treelib");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/treelib</code></p>
+<!-- END_bc3638a351ddab1c75ead2b811f05c72 -->
+<!-- START_d7d6b26a28cbe5c0df5b14bd9b1162e7 -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/treelib/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/treelib/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "id": 1,
+    "created_at": "2019-11-05 21:00:39",
+    "updated_at": "2019-11-05 21:00:39",
+    "image": "TreeLibImages\/lsR7hqwQbMDZSLNxqJhpA5rSihDrpueN5c7L1VMu.jpeg",
+    "tree_id": 1
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/treelib/{treelib}</code></p>
+<!-- END_d7d6b26a28cbe5c0df5b14bd9b1162e7 -->
+<!-- START_e3500cabecefd92a8fc3a1605da5d15b -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/treelib/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/treelib/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/treelib/{treelib}</code></p>
+<p><code>PATCH api/treelib/{treelib}</code></p>
+<!-- END_e3500cabecefd92a8fc3a1605da5d15b -->
+<!-- START_acee8214394222f951774da274696a64 -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/treelib/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/treelib/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/treelib/{treelib}</code></p>
+<!-- END_acee8214394222f951774da274696a64 -->
+<h1>Tree management</h1>
+<p>Methods for managing Trees</p>
+<!-- START_da9230ceb5de41a8bebada842a653621 -->
+<h2>Display a listing of the resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/trees" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/trees");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        "id": 1,
+        "created_at": "2019-11-05 17:05:39",
+        "updated_at": "2019-11-05 17:05:39",
+        "name": "carvalho",
+        "planted_at": null,
+        "description": "é bonito",
+        "backyard_id": 2
+    },
+    {
+        "id": 2,
+        "created_at": "2019-11-05 21:00:04",
+        "updated_at": "2019-11-05 21:00:04",
+        "name": "eucalipto",
+        "planted_at": null,
+        "description": "é feio",
+        "backyard_id": 2
+    }
+]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/trees</code></p>
+<!-- END_da9230ceb5de41a8bebada842a653621 -->
+<!-- START_1806d3d3d9587b608d6d48c9a390c647 -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/trees" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/trees");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/trees</code></p>
+<!-- END_1806d3d3d9587b608d6d48c9a390c647 -->
+<!-- START_f85abc225ce14ccf29b95c6a1d269ebb -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/trees/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/trees/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "id": 1,
+    "created_at": "2019-11-05 17:05:39",
+    "updated_at": "2019-11-05 17:05:39",
+    "name": "carvalho",
+    "planted_at": null,
+    "description": "é bonito",
+    "backyard_id": 2
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/trees/{tree}</code></p>
+<!-- END_f85abc225ce14ccf29b95c6a1d269ebb -->
+<!-- START_7a4a7d25c4f898a16d7f726fb689ee27 -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/trees/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/trees/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/trees/{tree}</code></p>
+<p><code>PATCH api/trees/{tree}</code></p>
+<!-- END_7a4a7d25c4f898a16d7f726fb689ee27 -->
+<!-- START_e87696114992bdf9ca05608993a3bc1c -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/trees/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/trees/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/trees/{tree}</code></p>
+<!-- END_e87696114992bdf9ca05608993a3bc1c -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>
