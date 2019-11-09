@@ -70,14 +70,14 @@ class BackyardController extends Controller
     {
         //echo $backyard['id'];
 
-        $showBackyardTrees = Tree::all()->where('backyard_id',$backyard['id']);
-        $showBackyardPlants = Plant::all()->where('backyard_id',$backyard['id']);
+        //$showBackyardTrees = Tree::all()->where('backyard_id',$backyard['id']);
+        //$showBackyardPlants = Plant::all()->where('backyard_id',$backyard['id']);
          
         
         return view("showBackyard")
-            ->with("backyardTrees",$showBackyardTrees)
-            ->with("backyardName",$backyard)
-            ->with("backyardPlants",$showBackyardPlants);
+            ->with("backyardName",$backyard);
+            //->with("backyardTrees",$showBackyardTrees)
+            //->with("backyardPlants",$showBackyardPlants);
     }
 
     /**

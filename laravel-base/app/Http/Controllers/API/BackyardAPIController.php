@@ -22,12 +22,21 @@ class BackyardAPIController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        //$user = $request->user();
         $backyard = Backyard::with('user')->get();
 
         //OK STATUS
         return response()->json($backyard,200);
+        /*$response = [
+            'data' => $backyard,
+            'message' => "backyards",
+            'result' => 'ok',
+            'user' => $user
+        ];*
+
+        return $response;*/
     }
 
     /**
