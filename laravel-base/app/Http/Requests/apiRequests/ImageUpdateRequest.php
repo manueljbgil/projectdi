@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\apiRequests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TreeLibStoreRequest extends FormRequest
+
+class ImageUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +26,8 @@ class TreeLibStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image',
-            'tree_id' => 'required|exists:trees,id'
+            'path' => 'string|max:255',
+            'library_id'=> 'exists:libraries,id'
         ];
     }
 

@@ -16,7 +16,6 @@
  */
 Route::get('/', 'MainController@index')->name('index');
 Route::resource('backyards', 'BackyardController');
-Route::resource('trees', 'TreeController');
 
 
 /**

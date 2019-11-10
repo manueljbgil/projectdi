@@ -85,7 +85,7 @@ class BackyardAPIController extends Controller
      * @bodyParam image image An image for the backyard
      * @bodyParam user_id int The id of the user associated with the backyard
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Backyard  $backyard
      * @return \Illuminate\Http\Response
      */
     public function update(BackyardUpdateRequest $request, Backyard $backyard)

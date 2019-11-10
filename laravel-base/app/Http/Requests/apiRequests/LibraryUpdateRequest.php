@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\apiRequests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PlantLibStoreRequest extends FormRequest
+
+class LibraryUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +26,7 @@ class PlantLibStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|image',
-            'plant_id' => 'required|exists:plants,id'
+            'plantation_id' => 'exists:plantations,id'
         ];
     }
 

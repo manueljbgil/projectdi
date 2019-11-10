@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\apiRequests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class PlantUpdateRequest extends FormRequest
+class PlantationUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,10 @@ class PlantUpdateRequest extends FormRequest
     {
         return [
             'name' =>'string|max:255',
-            'planted_at'=>'date',
+            'planted_at' => 'date',
             'description' => 'string',
-            'backyard_id'=>'exists:backyards,id'
+            'backyard_id'=> 'exists:backyards,id',
+            'type_id'=> 'exists:types,id'
         ];
     }
 

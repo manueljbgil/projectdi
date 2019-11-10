@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\apiRequests;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TreeStoreRequest extends FormRequest
+
+class ImageStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +26,8 @@ class TreeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' =>'required|string|max:255',
-            'planted_at' => 'date',
-            'description' =>'string',
-            'backyard_id'=>'required|exists:backyards,id'
+            'path' => 'required|string|max:255',
+            'library_id'=> 'required|exists:libraries,id'
         ];
     }
 

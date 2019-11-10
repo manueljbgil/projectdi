@@ -6,7 +6,7 @@
 </div>
 <br>
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-left">
         <div>
                 @foreach($backyards as $backyard)
                     <div class="card">

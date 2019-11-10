@@ -18,9 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth:api'], function(){
-    Route::apiResource('backyards',"API\BackyardAPIController");
+    
 });
-
 
 //Route::apiResource('backyards',"API\BackyardAPIController");
 //Route::apiResource('trees',"API\TreeAPIController");
@@ -28,3 +27,9 @@ Route::group(['middleware' => 'auth:api'], function(){
 //Route::apiResource('treelib',"API\TreeLibAPIController");
 //Route::apiResource('plantlib',"API\PlantLibAPIController");
 
+
+Route::apiResource('backyards',"API\BackyardAPIController");
+Route::apiResource('types',"API\TypeAPIController");
+Route::apiResource('plantations',"API\PlantationAPIController");
+Route::apiResource('libraries',"API\LibraryAPIController");
+Route::apiResource('images',"API\ImageAPIController");
