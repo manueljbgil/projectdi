@@ -26,7 +26,7 @@ class ImageStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'path' => 'required|string|max:255',
+            'path' => 'required',
             'library_id'=> 'required|exists:libraries,id'
         ];
     }

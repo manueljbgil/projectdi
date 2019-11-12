@@ -24,19 +24,20 @@ class BackyardAPIController extends Controller
      */
     public function index(Request $request)
     {
-        //$user = $request->user();
-        $backyard = Backyard::with('user')->get();
+        $user = $request->user();
+        $backyard = Backyard::all();
 
         //OK STATUS
-        return response()->json($backyard,200);
-        /*$response = [
+        //return response()->json($backyard,200);
+        $response = [
             'data' => $backyard,
             'message' => "backyards",
             'result' => 'ok',
+            'code' => 200,
             'user' => $user
-        ];*
+        ];
 
-        return $response;*/
+        return $response;
     }
 
     /**

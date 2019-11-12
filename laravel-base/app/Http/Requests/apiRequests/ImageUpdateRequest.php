@@ -26,7 +26,7 @@ class ImageUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'path' => 'string|max:255',
+            'path' => 'required',
             'library_id'=> 'exists:libraries,id'
         ];
     }

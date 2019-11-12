@@ -64,4 +64,8 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public function backyards(){
+        return $this->hasMany('App\Backyard');
+    }
 }

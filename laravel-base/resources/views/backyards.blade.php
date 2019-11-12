@@ -29,10 +29,11 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6" >       
-                                    <img class="img-fluid img-thumbnail rounded float-right" src="/uploads/{{$backyard->image}}" {{$backyard->title}} >
+                                        <a href="/backyards/{{$backyard->id}}">
+                                            <img class="img-fluid img-thumbnail rounded float-right" src="/uploads/{{$backyard->image}}" {{$backyard->title}} >
+                                        </a>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                     <br>

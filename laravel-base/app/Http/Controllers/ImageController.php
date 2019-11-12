@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Log;
-use App\Tree;
+use App\Image;
 use Illuminate\Http\Request;
 
-class TreeController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class TreeController extends Controller
      */
     public function index()
     {
-        $tree = Tree::all();
-        return view("trees")->with("trees",$tree);
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class TreeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tree  $tree
+     * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(Tree $tree)
+    public function show(Image $image)
     {
         //
     }
@@ -54,10 +52,10 @@ class TreeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tree  $tree
+     * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tree $tree)
+    public function edit(Image $image)
     {
         //
     }
@@ -66,10 +64,10 @@ class TreeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tree  $tree
+     * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tree $tree)
+    public function update(Request $request, Image $image)
     {
         //
     }
@@ -77,10 +75,10 @@ class TreeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tree  $tree
+     * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tree $tree)
+    public function destroy(Image $image)
     {
         //
     }

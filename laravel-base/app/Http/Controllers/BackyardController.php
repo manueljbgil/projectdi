@@ -4,13 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BackyardStoreRequest;
 use App\Backyard;
-use App\Tree;
-use App\Plant;
+use App\Plantation;
+use App\User;
+use App\Library;
+use App\Image;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class BackyardController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +32,9 @@ class BackyardController extends Controller
      */
     public function index()
     {
-        $backyards = Backyard::with('user')->get();
-        return view("backyards")->with("backyards",$backyards);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        return view("backyards")->with("backyards",$user->backyards);
     }
 
     /**
@@ -48,8 +63,7 @@ class BackyardController extends Controller
         ]);
         
         $data = $request->all();
-        //antes de ter sessions
-        $data = $data + array('user_id' => 1);
+        $data = $data + array('user_id' => auth()->user()->id);
         if($request->hasFile('image')){
             $file = $request->file("image")->store('backyardImages');
             $data['image'] = $file;
@@ -68,16 +82,59 @@ class BackyardController extends Controller
      */
     public function show(Backyard $backyard)
     {
-        //echo $backyard['id'];
+        if(auth()->user()->id != $backyard->user_id){
+            return redirect('/backyards')->with('error','Unauthorized Page');
+        }
 
-        //$showBackyardTrees = Tree::all()->where('backyard_id',$backyard['id']);
-        //$showBackyardPlants = Plant::all()->where('backyard_id',$backyard['id']);
-         
+        $backyardPlantations = Plantation::all()->where('backyard_id', $backyard['id']);
+        Log::info($backyardPlantations);
+
         
+        //foreach para todos os backyardPlantations ids
+        $libraries = [];
+        foreach($backyardPlantations as $plantation){
+            $lib = Library::all()->where('plantation_id',$plantation['id']);
+            
+            array_push($libraries,$lib);
+            Log::info(json_encode($libraries));
+        }
+        
+        $images = [];
+        foreach($libraries as $l){
+                Log::info("lib " .$l);
+                if(sizeof($l) != 0){
+                    Log::info("entrei " .$l[0]['plantation_id']);
+                    
+                    $im = (object)null;
+                    $im->id = $l[0]['plantation_id'];
+                    $im->im = Image::all()->where('library_id',$l[0]['id'])->pluck('path')->first();
+                    
+                    foreach($backyardPlantations as $plant){
+            
+                        if($plant['id'] == $im->id){
+                            Log::info('entrei');
+                            $plant = (object)$plant;
+                            $plant->image = $im->im;
+                            $plant = (object)$plant;
+                        }
+                        else{ 
+                            $plant = (object)$plant;
+                            $plant->image = null;
+                            $plant = (object)$plant; 
+                        }
+                    }
+
+                    Log::info(json_encode($im));
+                    array_push($images,$im);
+                }
+        }
+
+        Log::info(json_encode($images));
+        Log::info("Backyard Plantations  " .json_encode($backyardPlantations));
+
         return view("showBackyard")
-            ->with("backyardName",$backyard);
-            //->with("backyardTrees",$showBackyardTrees)
-            //->with("backyardPlants",$showBackyardPlants);
+            ->with("backyardName",$backyard)
+            ->with("backyardPlantations",$backyardPlantations);
     }
 
     /**
@@ -88,6 +145,11 @@ class BackyardController extends Controller
      */
     public function edit(Backyard $backyard)
     {
+
+        if(auth()->user()->id != $backyard->user_id){
+            return redirect('/backyards')->with('error','Unauthorized Page');
+        }
+
         return view('editBackyard')->with('backyard',$backyard);
     }
 
@@ -130,6 +192,5 @@ class BackyardController extends Controller
     {
         $backyard->delete();
         return redirect('/backyards')->with('success','Backyard Removed');
-    
     }
 }

@@ -15,7 +15,6 @@
  * Unauthenticated Routes
  */
 Route::get('/', 'MainController@index')->name('index');
-Route::resource('backyards', 'BackyardController');
 
 
 /**
@@ -26,7 +25,11 @@ Auth::routes();
 /**
  * Authenticated only Routes
  */
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('backyards', 'BackyardController');
+Route::get('plantations/create/{backyard_id}', 'PlantationController@create');
+Route::resource('plantations', 'PlantationController');
+
+
 
 /**
  * Backoffice Routes
@@ -39,6 +42,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backoffice', 'middleware' => 
         Route::resource('user', 'UserController');
     }
 );
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
