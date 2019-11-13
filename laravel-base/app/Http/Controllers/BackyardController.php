@@ -58,7 +58,7 @@ class BackyardController extends Controller
     {
         $this->validate($request,[
             'name' => 'string|required|max:255',
-            'description' => 'string',
+            'description' => 'max:400',
             'image' => 'image'
         ]);
         
@@ -86,52 +86,29 @@ class BackyardController extends Controller
             return redirect('/backyards')->with('error','Unauthorized Page');
         }
 
-        $backyardPlantations = Plantation::all()->where('backyard_id', $backyard['id']);
+        $backyardPlantations = Plantation::all()->where('backyard_id', $backyard->id);
         Log::info($backyardPlantations);
 
         
         //foreach para todos os backyardPlantations ids
         $libraries = [];
         foreach($backyardPlantations as $plantation){
-            $lib = Library::all()->where('plantation_id',$plantation['id']);
             
-            array_push($libraries,$lib);
-            Log::info(json_encode($libraries));
-        }
-        
-        $images = [];
-        foreach($libraries as $l){
-                Log::info("lib " .$l);
-                if(sizeof($l) != 0){
-                    Log::info("entrei " .$l[0]['plantation_id']);
-                    
-                    $im = (object)null;
-                    $im->id = $l[0]['plantation_id'];
-                    $im->im = Image::all()->where('library_id',$l[0]['id'])->pluck('path')->first();
-                    
-                    foreach($backyardPlantations as $plant){
+            //$lib = Library::all()->where('plantation_id',$plantation['id']);
+            $lib = Library::all()->where('plantation_id',$plantation->id)->pluck('id')->first();
+            Log::info($lib);
+
+            //landing image
+            $im = (object)null;
+            $im->id = $plantation->id;//[0]['plantation_id'];
+            $im->im = Image::all()->where('library_id',$lib)->pluck('path')->first();
+
+            //adicionar imagem a plantation        
+            $plant = (object)$plantation;
+            $plant->image = $im->im;
+            $plant = (object)$plant;
             
-                        if($plant['id'] == $im->id){
-                            Log::info('entrei');
-                            $plant = (object)$plant;
-                            $plant->image = $im->im;
-                            $plant = (object)$plant;
-                        }
-                        else{ 
-                            $plant = (object)$plant;
-                            $plant->image = null;
-                            $plant = (object)$plant; 
-                        }
-                    }
-
-                    Log::info(json_encode($im));
-                    array_push($images,$im);
-                }
         }
-
-        Log::info(json_encode($images));
-        Log::info("Backyard Plantations  " .json_encode($backyardPlantations));
-
         return view("showBackyard")
             ->with("backyardName",$backyard)
             ->with("backyardPlantations",$backyardPlantations);

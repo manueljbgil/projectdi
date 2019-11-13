@@ -28,7 +28,8 @@ Auth::routes();
 Route::resource('backyards', 'BackyardController');
 Route::get('plantations/create/{backyard_id}', 'PlantationController@create');
 Route::resource('plantations', 'PlantationController');
-
+Route::resource('libraries', 'LibraryController');
+Route::resource('images', 'ImageController');
 
 
 /**

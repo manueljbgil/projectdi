@@ -23,6 +23,10 @@
                     {{Form::label('Description', 'Backyard Description')}}
                     {{Form::Textarea('description','',['class' => 'form-control','placeholder' => 'Description']) }}
             </div>
+            <div class="form-group"> 
+                    {{Form::label('Image', 'Plant Image')}}
+                    {{Form::file('path',['class' => 'form-control','placeholder' => 'image']) }}
+            </div>
             {{ Form::hidden('backyard_id', $backyard) }}
             {{Form::submit('Submit',['class' => 'btn btn-dark btn-sm'])}}
         {!! Form::close()!!}

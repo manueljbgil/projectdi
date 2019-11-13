@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Image;
+use App\Plantation;
+use App\Library;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -14,7 +16,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        return view("backyards")->with("backyards",$user->backyards);
     }
 
     /**
@@ -24,7 +28,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -46,7 +50,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +61,7 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
-        //
+        // will not be implemented
     }
 
     /**
@@ -69,7 +73,7 @@ class ImageController extends Controller
      */
     public function update(Request $request, Image $image)
     {
-        //
+        //will not be implemented
     }
 
     /**
@@ -80,6 +84,7 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
-        //
+        $image->delete();
+        return redirect()->action('LibraryController@show', $image->library->id)->with('success','Image Removed');
     }
 }

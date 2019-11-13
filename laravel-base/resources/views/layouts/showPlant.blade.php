@@ -9,7 +9,7 @@
                             <div class="carousel-inner">
                                 @foreach($images as $key => $image)
                                     <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                        <img src="/uploads/{{$image->path}}" style="width:100%;max-height:100%;margin:auto;" alt="">
+                                        <img src="/uploads/{{$image}}" style="width:100%;max-height:100%;margin:auto;" alt="">
                                         <div class="carousel-caption d-none d-md-block">
                                         <h5>{{$plantation->name}} ({{$key+1}}/{{count($images)}})</h5>
                                         </div>
@@ -35,6 +35,7 @@
                             <br>
                         </blockquote>
                         <a href="#" class="btn btn-dark btn-sm">Add Image + </a>
+                    <a href="/libraries/{{$library_id}}" class="btn btn-dark btn-sm">Manage Library</a>
                         <div class="btn-group" role="group">
                             {!! Form::open(['action' => ['PlantationController@destroy',$plantation->id],'method' => 'POST']) !!}
                                 {{ Form::hidden('_method','DELETE') }}
@@ -45,8 +46,7 @@
                 </div>
             </div>
             <hr>
-            
-            
+            @yield('content1')
         </div>
 </div>
 @endsection

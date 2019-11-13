@@ -7,6 +7,7 @@ use App\Plantation;
 use App\User;
 use App\Library;
 use App\Image;
+use App\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -65,12 +66,27 @@ class PlantationController extends Controller
             'type_id'=> 'required|exists:types,id' 
         ]);
 
+        //create plant
         $data = $request->all();
         $data = $data + array('user_id' => auth()->user()->id);
-
         $plantation = Plantation::create($data);
-
-        return redirect()->action('PlantationController@show', $plantation);
+        
+        //create library
+        $library = array('user_id' => auth()->user()->id);
+        $library = $library + array('plantation_id' => $plantation->id);
+        $library = $library + array('backyard_id' => $request->backyard_id);
+        $lib = Library::create($library);
+        
+        //add first image
+        if($request->hasFile('path')){
+            $file = $request->file("path")->store('librariesImages');
+            $image['path'] = $file;
+            $image['library_id'] = $lib->id;
+            Image::create($image);
+        }
+        
+        
+        return redirect()->action('BackyardController@show', $plantation->backyard_id);
     }
 
     /**
@@ -81,15 +97,19 @@ class PlantationController extends Controller
      */
     public function show(Plantation $plantation)
     {
-        $library = Library::all()->where('plantation_id',$plantation->id);
+        $library = Library::all()->where('plantation_id',$plantation->id)
+                                 ->first();
+
+        
+        $images = Image::all()->where('library_id',$library['id'])->pluck('path');
+        $imageslib = Image::all()->where('library_id',$library['id']);
 
         Log::info($library);
 
-        $images = Image::all()->where('library_id',$library[0]['id']);
-        Log::info($images);
-
-        return view('showPlant')-> with('plantation',$plantation)
-                                -> with('images',$images);
+        return view('layouts.showPlant')->with('imageslib',$imageslib)
+                                ->with('images',$images)
+                                -> with('plantation',$plantation)
+                                -> with('library_id',$library['id']);
     }
 
     /**
@@ -100,7 +120,11 @@ class PlantationController extends Controller
      */
     public function edit(Plantation $plantation)
     {
-        //
+        //$types = Type::all();
+        $types =['' => 'Select a type'] + Type::pluck('name','id')->all();
+
+        return view('editPlantation')->with('plantation',$plantation)
+                                     ->with('types', $types);
     }
 
     /**
@@ -112,7 +136,17 @@ class PlantationController extends Controller
      */
     public function update(Request $request, Plantation $plantation)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|string|max:255',
+            'description' => 'max:255',
+            'type_id'=> 'required|exists:types,id'
+        ]);
+        
+        $data = $request->all();
+        $data = $data + array('user_id' => auth()->user()->id);
+        
+        $plantation->update($data);
+        return redirect()->action('BackyardController@show', $plantation->backyard_id)->with('success','Plantation Updated');
     }
 
     /**
