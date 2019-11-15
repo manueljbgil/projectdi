@@ -8,6 +8,12 @@ use App\Http\Requests\apiRequests\ImageUpdateRequest;
 use App\Library;
 use App\Image;
 
+/**
+ * 
+ * @group Image management
+ * 
+ * Methods for managing Images
+ */
 class ImageAPIController extends Controller
 {
     /**

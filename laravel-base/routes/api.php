@@ -22,8 +22,8 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::apiResource('types',"API\TypeAPIController");
     Route::apiResource('plantations',"API\PlantationAPIController");
     Route::apiResource('libraries',"API\LibraryAPIController");
-    
+    Route::apiResource('images',"API\ImageAPIController");
 });
 
-Route::apiResource('images',"API\ImageAPIController");
+
 

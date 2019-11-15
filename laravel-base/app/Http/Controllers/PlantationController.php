@@ -104,12 +104,13 @@ class PlantationController extends Controller
         $images = Image::all()->where('library_id',$library['id'])->pluck('path');
         $imageslib = Image::all()->where('library_id',$library['id']);
 
-        Log::info($library);
+        $data = $library->id;
+        Log::info($plantation);
 
         return view('layouts.showPlant')->with('imageslib',$imageslib)
                                 ->with('images',$images)
                                 -> with('plantation',$plantation)
-                                -> with('library_id',$library['id']);
+                                -> with('library',$data);
     }
 
     /**

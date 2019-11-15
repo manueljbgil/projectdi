@@ -67,12 +67,12 @@ class LibraryController extends Controller
         
         //$lib = Library::all()->where('id',$image->library_id)->pluck('id');
         $plantation = Plantation::all()->where('id',$library->plantation_id)->first();
-        Log::info($images);
+        Log::info($imageslib);
 
         return view('showLibrary')->with('images',$images)
                                   ->with('imageslib',$imageslib)
                                   ->with('plantation',$plantation)
-                                  ->with('library_id',$library->id);
+                                  ->with('library',$library->id);
     }
 
     /**

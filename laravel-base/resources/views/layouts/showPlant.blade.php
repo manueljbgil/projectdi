@@ -5,22 +5,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
+                    <div id="carouselExampleControls" class="carousel slide parent1">
+                            <div class="carousel-inner parent1">
                                 @foreach($images as $key => $image)
-                                    <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                        <img src="/uploads/{{$image}}" style="width:100%;max-height:100%;margin:auto;" alt="">
+                                    <div class="carousel-item {{$key == 0 ? 'active' : '' }} parent1">
+                                        <img src="/uploads/{{$image}}" class="img1" alt="">
                                         <div class="carousel-caption d-none d-md-block">
                                         <h5>{{$plantation->name}} ({{$key+1}}/{{count($images)}})</h5>
                                         </div>
                                     </div>
                                 @endforeach
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <a class="carousel-control-prev front1" href="#carouselExampleControls" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <a class="carousel-control-next front1" href="#carouselExampleControls" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -34,14 +34,16 @@
                             <footer class="blockquote-footer">Planted at {{$plantation->planted_at}}</footer>
                             <br>
                         </blockquote>
-                        <a href="#" class="btn btn-dark btn-sm">Add Image + </a>
-                    <a href="/libraries/{{$library_id}}" class="btn btn-dark btn-sm">Manage Library</a>
-                        <div class="btn-group" role="group">
-                            {!! Form::open(['action' => ['PlantationController@destroy',$plantation->id],'method' => 'POST']) !!}
+                        <a href="/ims/create/{{$library}}" class="btn btn-dark btn-sm">Add Image + </a>
+                        <a href="/libraries/{{$library}}" class="btn btn-dark btn-sm">Manage Library</a>
+                        
+                    </div>
+                    <br>
+                    <div class="col-md-6">
+                        {!! Form::open(['action' => ['PlantationController@destroy',$plantation->id],'method' => 'POST']) !!}
                                 {{ Form::hidden('_method','DELETE') }}
-                                {{ Form::submit('Delete',['class' => 'btn btn-danger btn-sm']) }}
+                                {{ Form::submit('Delete plant',['class' => 'btn btn-danger btn-sm']) }}
                             {!! Form::close()!!}
-                        </div>
                     </div>
                 </div>
             </div>

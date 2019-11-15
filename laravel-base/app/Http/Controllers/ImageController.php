@@ -6,6 +6,7 @@ use App\Image;
 use App\Plantation;
 use App\Library;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ImageController extends Controller
 {
@@ -26,9 +27,10 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
+        Log::info($request->library);
+        return view('uploadImage')->with('library',$request->library);
     }
 
     /**
@@ -39,7 +41,21 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Log::info($request->all());
+        if($request->hasFile('path')){
+            $file = $request->file("path")->store('librariesImages');
+            $image['path'] = $file;
+            $image['library_id'] = $request->library_id;
+
+            Image::create($image);
+        }
+        
+        $plantid = Library::all()->where('id',$request->library_id)->pluck('plantation_id');
+        Log::info($plantid);
+        $plant = Plantation::all()->where('id',$plantid[0])->first();
+        Log::info($plant);
+
+        return redirect()->action('PlantationController@show', $plant)->with('success','Image Created');;
     }
 
     /**
@@ -82,9 +98,14 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Image $image)
+    public function destroy(int $image)
     {
-        $image->delete();
-        return redirect()->action('LibraryController@show', $image->library->id)->with('success','Image Removed');
+        Log::info($image);
+        $image1 = Image::all()->where('id',$image)->first();
+        $lib = $image1->library_id;
+        //Log::info($library);
+
+        $image1->delete();
+        return redirect()->action('LibraryController@show', $lib)->with('success','Image Removed');
     }
 }

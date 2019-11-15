@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-12">
                 <div class="jumbotron jumbotron-fluid" style="background-image: url(/uploads/{{$backyardName->image}}); background-size: 120%;">
-                        <div class="container">
+                        <div class="container front">
                             <h1 class="display-4">{{$backyardName->name}}</h1>
                             <p class="lead">{{$backyardName->description}}</p>
                         </div>
@@ -23,15 +23,15 @@
             <div class="row">
                 @foreach($backyardPlantations as $plantation)
                     <div class="col-sm-4">
-                        <div class="card">
-                            <a href="/plantations/{{$plantation->id}}"> <img src="/uploads/{{$plantation->image}}" class="card-img-top" ></a>
+                        <div class="card parent">
+                            <a href="/plantations/{{$plantation->id}}"> <img src="/uploads/{{$plantation->image}}" class="card-img-top img" ></a>
                             <div class="card-body">
                                 <h5 class="card-title"><a href="/plantations/{{$plantation->id}}">{{$plantation->name}}</a></h5>
                                 <p class="card-text">{{$plantation->description}}</p>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group" role="group">
-                                                <a class="btn btn-dark btn-sm float-left"  href="/plantations/{{$plantation->id}}/edit"> Edit </a>
+                                                <a class="btn btn-dark btn-sm float-left"  href="/plantations/{{$plantation}}/edit"> Edit </a>
                                         </div>
                                         <div class="btn-group" role="group">
                                                 {!! Form::open(['action' => ['PlantationController@destroy',$plantation->id],'method' => 'POST']) !!}
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer parent">
                                 <small class="text-muted">planted at {{$plantation->planted_at}}</small>
                             </div>
                         </div>

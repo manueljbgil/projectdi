@@ -9,7 +9,7 @@
     <div class="row justify-content-left">
         <div>
                 @foreach($backyards as $backyard)
-                    <div class="card">
+                    <div class="card" >
                         <div class="card-header">
                             <h1><a href="/backyards/{{$backyard->id}}">{{$backyard->name}}</a></h1>
                         </div>
@@ -30,7 +30,7 @@
                                 </div>
                                 <div class="col-md-6" >       
                                         <a href="/backyards/{{$backyard->id}}">
-                                            <img class="img-fluid img-thumbnail rounded float-right" src="/uploads/{{$backyard->image}}" {{$backyard->title}} >
+                                            <img class="img-fluid img-thumbnail rounded float-right " src="/uploads/{{$backyard->image}}" {{$backyard->title}} >
                                         </a>
                                 </div>
                             </div>

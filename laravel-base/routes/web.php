@@ -26,10 +26,15 @@ Auth::routes();
  * Authenticated only Routes
  */
 Route::resource('backyards', 'BackyardController');
-Route::get('plantations/create/{backyard_id}', 'PlantationController@create');
+
+
 Route::resource('plantations', 'PlantationController');
+Route::get('plantations/create/{backyard_id}', 'PlantationController@create');
+
 Route::resource('libraries', 'LibraryController');
-Route::resource('images', 'ImageController');
+
+Route::resource('ims', 'ImageController');
+Route::get('ims/create/{library}', 'ImageController@create');
 
 
 /**
