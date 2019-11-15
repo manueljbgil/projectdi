@@ -57,7 +57,7 @@ class BackyardController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' => 'string|required|max:255',
+            'name' => 'required|string|max:255',
             'description' => 'max:400',
             'image' => 'image'
         ]);
@@ -140,7 +140,7 @@ class BackyardController extends Controller
     public function update(Request $request, Backyard $backyard)
     {
         $this->validate($request,[
-            'name' => 'string|required|max:255',
+            'name' => 'required|string|max:255',
             'description' => 'string',
             'image' => 'image',
             'user_id'=>'exists:users,id'

@@ -53,19 +53,6 @@ class LibraryController extends Controller
         $images = Image::all()->where('library_id',$library->id)->pluck('path');
         $imageslib= Image::all()->where('library_id',$library->id);
 
-        /*$im = [];
-        foreach($images as $image){
-            array_push($im, (object)[
-                'id' => $image->id,
-                'path' => $image->path
-            ]);
-            Log::info(json_encode($im));
-        }
-        $finalIm = json_encode($im);
-
-        //$images = []*/
-        
-        //$lib = Library::all()->where('id',$image->library_id)->pluck('id');
         $plantation = Plantation::all()->where('id',$library->plantation_id)->first();
         Log::info($imageslib);
 

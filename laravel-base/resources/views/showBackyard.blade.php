@@ -31,7 +31,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="btn-group" role="group">
-                                                <a class="btn btn-dark btn-sm float-left"  href="/plantations/{{$plantation}}/edit"> Edit </a>
+                                                <a class="btn btn-dark btn-sm float-left"  href="/plantations/{{$plantation->id}}/edit"> Edit </a>
                                         </div>
                                         <div class="btn-group" role="group">
                                                 {!! Form::open(['action' => ['PlantationController@destroy',$plantation->id],'method' => 'POST']) !!}
